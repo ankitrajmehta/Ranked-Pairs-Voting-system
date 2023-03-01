@@ -9,7 +9,7 @@
 // preferences[i][j] is number of voters who prefer i over j
 int preferences[MAX][MAX];
 
-// locked[i][j] means i is locked in over j
+// locked[i][j] means candidate i won over candidate j
 bool locked[MAX][MAX];
 
 // Each pair has a winner, loser
@@ -52,17 +52,11 @@ bool cycle(int winner, int loser)
 }
 
 
-int main(int argc, char* argv[])
+int main()
 {
-    // Check for invalid usage
-    if (argc < 2)
-    {
-        printf("Needs atleast 2 candidates\n");
-        return 1;
-    }
-
     // Populate array of candidates
-    candidate_count = argc - 1;
+    printf("Num of candidates: ");
+    scanf("%i", &candidate_count); 
     if (candidate_count > MAX)
     {
         printf("Maximum number of candidates is %i\n", MAX);
@@ -70,8 +64,12 @@ int main(int argc, char* argv[])
     }
     for (int i = 0; i < candidate_count; i++)
     {
-        candidates[i] = argv[i + 1];
+        char *tmp = malloc(sizeof(char) * 25);
+        printf("Name of Candidate %i :", i + 1);
+        scanf("%s", tmp);
+        candidates[i] = tmp;
     }
+
     //set all preferences to zero
     for (int i = 0; i < candidate_count; i++)
     {
@@ -299,7 +297,7 @@ void print_winner(void)
         }
         if (false_count == candidate_count)
         {
-            printf("%s\n", candidates[x]);
+            printf("winner is %s !!!!\n", candidates[x]);
             break;
         }
     }
