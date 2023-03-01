@@ -1,4 +1,4 @@
-# Ranked-Pairs-Voting-system
+# Ranking-Voting-system
 Voters get to rank the candidates. Complies with the Condorcet winner criterion.
 
 # How-It-Works
